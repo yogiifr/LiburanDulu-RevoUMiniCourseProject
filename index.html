@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@100;300;400;500;600;700&display=swap");
+
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Poppins;
+      }
+      .mySlides {
+        display: none;
+      }
+      img {
+        vertical-align: middle;
+      }
+
+      /* Slideshow container */
+      .slideshow-container {
+        max-width: 1000px;
+        position: relative;
+        margin: auto;
+      }
+
+      /* Caption text */
+      .text {
+        color: #f2f2f2;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Number text (1/3 etc) */
+      .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+      }
+
+      /* The dots/bullets/indicators */
+      .dot {
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+      }
+
+      .active {
+        background-color: #717171;
+      }
+
+      /* Fading animation */
+      .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+      }
+
+      @keyframes fade {
+        from {
+          opacity: 0.4;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* On smaller screens, decrease text size */
+      @media only screen and (max-width: 300px) {
+        .text {
+          font-size: 11px;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="font-poppins">
+    <nav class="bg-white">
+      <div class="max-w-screen-2xl flex items-center justify-between mx-48 py-12">
+        <a href="#" class="flex items-center">
+          <img src="../assets/logo.png" class="h-11 mr-5" alt="LiburanDulu Logo" />
+          <span class="self-center text-3xl font-bold whitespace-nowrap text-black">LiburanDulu</span>
+        </a>
+
+        <ul class="flex gap-10 text-2xl">
+          <li><a href="#hero" class="text-gray-600 hover:text-black">Home</a></li>
+          <li><a href="#package" class="text-gray-600 hover:text-black">Our Package</a></li>
+          <li><a href="#join-us" class="text-gray-600 hover:text-black">Join Us</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section id="hero" class="grid grid-cols-1 md:grid-cols-2 gap-7 bg-white py-none mx-48 mt-24">
+      <div>
+        <div class="sisi-kiri">
+          <h1 class="text-8xl font-bold mb-4">Rekreasi Bareng LiburanDulu!</h1>
+          <p class="text-4xl font-normal my-10">Gatau lagi mau liburan kemana, <br />udah sini bareng LiburanDulu!</p>
+
+          <div class="border p-4 rounded-3xl">
+            <div class="slideshow-container">
+              <div class="mySlides fade">
+                <img class="rounded-3xl" src="/assets/tempat2.jpeg" style="height: 500px" />
+              </div>
+
+              <div class="mySlides fade">
+                <img class="rounded-3xl" src="/assets/tempat3.jpg" style="height: 500px" />
+              </div>
+            </div>
+            <br />
+
+            <div style="text-align: center">
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+
+            <script>
+              let slideIndex = 0;
+              showSlides();
+
+              function showSlides() {
+                let i;
+                let slides = document.getElementsByClassName("mySlides");
+                let dots = document.getElementsByClassName("dot");
+                for (i = 0; i < slides.length; i++) {
+                  slides[i].style.display = "none";
+                }
+                slideIndex++;
+                if (slideIndex > slides.length) {
+                  slideIndex = 1;
+                }
+                for (i = 0; i < dots.length; i++) {
+                  dots[i].className = dots[i].className.replace(" active", "");
+                }
+                slides[slideIndex - 1].style.display = "block";
+                dots[slideIndex - 1].className += " active";
+                setTimeout(showSlides, 2000); // Change image every 2 seconds
+              }
+            </script>
+
+            <div class="testimoni bg-white text-gray-500 text-lg text-center mt-5">"Tanggal merah jadi lebih menyenangkan bareng LiburanDulu"</div>
+            <div class="profile mt-7 flex items-center justify-center mb-5">
+              <div class="image bg-gray-300 h-12 w-12 rounded-full mr-3"></div>
+              <div>
+                <div class="nama font-semibold">Asep Surasep <span class="text-gray-600 font-normal">Petani Stroberi, 35</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ml-20 my-auto">
+        <div class="contact-us text-3xl font-medium mb-2 mt-10 border border-black text-black rounded-full pl-8 py-3 align-middle">Contact Us</div>
+        <div class="info-contact my-5 ml-6 text-gray-400 text-sm">Customer service akan menghubungi anda 1x24 jam setelah data kami terima.</div>
+        <form id="contactForm">
+          <label for="name" class="block mb-3 text-xl font-semibold ml-6">Your Name</label>
+          <input type="text" id="name" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-black rounded-full bg-black text-white text-xl px-7 py-3" placeholder="Write your name" />
+
+          <label for="email" class="block mb-3 mt-5 text-xl font-semibold ml-6">Email Address</label>
+          <input type="email" id="email" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-black rounded-full bg-black text-white text-xl px-7 py-3" placeholder="youremail@gmail.com" />
+
+          <label for="tipe-liburan" class="block mb-3 mt-5 text-xl font-semibold ml-6">What are you interested in :</label>
+          <select name="tipe-liburan" id="tipe-liburan" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-black rounded-full px-4 text-xl">
+            <option value="tipe1">Wisata Sejarah dan Budaya</option>
+            <option value="tipe2">Wisata Alam dan Petualangan</option>
+            <option value="tipe3">Wisata Kuliner</option>
+            <option value="tipe4">Wisata Ghaib</option>
+          </select>
+
+          <button type="submit" class="send text-xl py-3 w-full mt-6 px-4 py-2 bg-black text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring ring-gray-200 focus:border-gray-200 mb-10 rounded-full">Send</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="package" class="bg-white pt-24 mx-48">
+      <div class="text-6xl font-bold mb-4 text-center align-middle justify-center mb-20">Our Package</div>
+      <div class="flex gap-5 items-center justify-center align-middle">
+        <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <img src="https://cdn-icons-png.flaticon.com/512/4850/4850688.png" width="256" height="256" alt="Bali free icon" title="Bali free icon" class="w-10 pb-3" />
+          <a href="#">
+            <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Bali</h5>
+          </a>
+          <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Mari berangkat ke Bali bersama tim LiburanDulu, dengan benefit berikut:</p>
+          <a href="#" class="inline-flex items-center text-blue-600 hover:underline">
+            Cek Benefit
+            <svg class="w-3 h-3 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778"
+              />
+            </svg>
+          </a>
+        </div>
+
+        <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <img src="   https://cdn-icons-png.flaticon.com/512/3041/3041070.png " width="256" height="256" alt="" title="" class="w-10 pb-3" />
+          <a href="#">
+            <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Jepang</h5>
+          </a>
+          <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Mari berangkat ke Jepang bersama tim LiburanDulu, dengan benefit berikut:</p>
+          <a href="#" class="inline-flex items-center text-blue-600 hover:underline">
+            Cek Benefit
+            <svg class="w-3 h-3 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778"
+              />
+            </svg>
+          </a>
+        </div>
+
+        <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <img src="   https://cdn-icons-png.flaticon.com/512/984/984078.png " width="256" height="256" alt="" title="" class="w-10 pb-3" />
+          <a href="#">
+            <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Singapura</h5>
+          </a>
+          <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Mari berangkat ke Singapura bersama tim LiburanDulu, dengan benefit berikut:</p>
+          <a href="#" class="inline-flex items-center text-blue-600 hover:underline">
+            Cek Benefit
+            <svg class="w-3 h-3 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="join-us" class="bg-white text-black pt-24 mx-48 text-center mb-20">
+      <div class="text-6xl font-bold mb-4 text-center align-middle justify-center mb-10">Join us Now!</div>
+      <div class="mb-4 text-center text-xl align-middle justify-center">Udah gausah basa basi langsung aja liburan bareng LiburanDulu dengan menekan tombol dibawah ini</div>
+      <button class="px-4 py-2 bg-black text-white rounded-full px-10 py-5 hover:bg-gray-700 focus:outline-none focus:ring ring-gray-500 focus:border-gray-700 mt-8">Join LiburanDulu!</button>
+    </section>
+
+    <footer class="bg-white p-4 text-center">
+      <img src="../assets/logo.png" class="h-8 mx-auto mb-4" alt="LiburanDulu Logo" />
+      <a href="#" class="text-black hover:underline">Term of Service</a>
+      <a href="#" class="text-black hover:underline ml-4">Privacy Policy</a>
+      <p class="text-gray-600 mt-4">© 2023 LiburanDulu</p>
+    </footer>
+  </body>
+</html>
